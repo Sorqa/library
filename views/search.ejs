@@ -1,0 +1,216 @@
+<%-include('header.ejs')%>
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>도서 검색</title>
+  <style>
+    h1 {
+      font-size: 24px;
+    }
+    
+    table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+
+    th,
+    td {
+      border: 1px solid black;
+      padding: 8px;
+      text-align: center;
+      background-color: white;
+    }
+
+    th {
+      background-color: whitesmoke;
+    }
+
+    img {
+      max-width: 100px;
+      height: auto;
+    }
+  </style>
+</head>
+
+<body>
+  <h2>도서 검색</h2>
+  <form action="/books/search" method="GET">
+    <input type="text" name="keyword" placeholder="검색어를 입력하세요">
+    <button type="submit">검색</button>
+  </form>
+
+  
+  <table id="searchResultsTable">
+    <tr>
+      <th>표지</th>
+      <th>제목</th>
+      <th>작가</th>
+      <th>출판사</th>
+      <th>장르</th>
+      <th>대출 여부</th>
+      <th>도서 위치</th>
+      <th>줄거리</th>
+      <th>대출/반납</th>
+    </tr>
+  </table>
+
+  <script>
+    //첫 화면으로 돌아가기
+     function goHome() {
+      location.href = '/';
+    }
+
+    // 검색 결과를 받아서 테이블에 출력하는 함수
+    function showSearchResults(results) {
+      var table = document.getElementById('searchResultsTable');
+
+      // 기존 테이블 내용 제거
+      while (table.rows.length > 1) {
+        table.deleteRow(1);
+      }
+
+      // 검색 결과 출력
+      results.forEach(function (book) {
+        var row = table.insertRow();
+
+        // 책 정보
+        var coverCell = row.insertCell();
+        var titleCell = row.insertCell();
+        var authorCell = row.insertCell();
+        var publisherCell = row.insertCell();
+        var genreCell = row.insertCell();
+        var availabilityCell = row.insertCell();
+        var locationCell = row.insertCell();
+        var summaryCell = row.insertCell();
+        var actionCell = row.insertCell();
+
+        // 책 표지
+        var coverImage = document.createElement('img');
+        coverImage.src = '/images/' + book.number + '.jpeg';
+        coverCell.appendChild(coverImage);
+
+        // 제목, 작가, 출판사, 장르, 대출 여부, 도서 위치, 줄거리 표시
+        titleCell.textContent = book.title;
+        authorCell.textContent = book.author;
+        publisherCell.textContent = book.publisher;
+        genreCell.textContent = book.genre;
+        availabilityCell.textContent = book.availability;
+        locationCell.textContent = book.location;
+        summaryCell.textContent = book.summary;
+
+        // 대출/반납 버튼
+        var actionButton = document.createElement('button');
+        actionButton.textContent = book.availability === 'Y' ? '반납' : '대출';
+        actionButton.onclick = function () {
+          if (book.availability === 'Y') {
+            returnBook(book.number); //반납요청 함수 호출
+            console.log('반납중입니다.');
+            
+            loadKeywordFromLocalStorage();
+          } else {
+            borrowBook(book.number); //대출요청 함수 호출
+            console.log('대출중입니다.');
+            
+            loadKeywordFromLocalStorage();
+          }
+        };
+        actionCell.appendChild(actionButton);
+    });
+}
+
+// 서버로부터 검색 결과를 요청하는 함수
+function searchBooks(keyword) {
+  fetch('/books/search?keyword=' + keyword)
+    .then(function (response) {
+      return response.json();
+    })
+    .then(function (data) {
+      showSearchResults(data);
+    })
+    .catch(function (error) {
+      console.log('Error:', error);
+    });
+}
+
+// 검색 폼 제출 이벤트 처리 (검색 처리)
+document.querySelector('form').addEventListener('submit', function (event) {
+  event.preventDefault(); // 새로고침 방지
+  var keyword = event.target.keyword.value;
+  saveKeywordToLocalStorage(keyword); // 검색어 저장
+  searchBooks(keyword); // 검색 결과 표출
+});
+
+// 검색어를 localStorage에 저장하는 함수
+function saveKeywordToLocalStorage(keyword) {
+  localStorage.setItem('searchKeyword', keyword);
+}
+
+// 페이지 로드 시 검색어를 가져와서 검색 폼에 설정하는 함수
+function loadKeywordFromLocalStorage() {
+  var keyword = localStorage.getItem('searchKeyword');
+  if (keyword) {
+    document.querySelector('input[name="keyword"]').value = keyword;
+    searchBooks(keyword); // 저장된 검색어로 검색 결과 표출
+  }
+}
+
+
+
+// 서버에게 대출을 요청하는 함수
+function borrowBook(booknumber){
+
+  //자료변환
+  var requestData = {
+    number: booknumber
+  };
+
+  fetch('/books/borrowbook', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify(requestData)
+  })
+    .then(function(response) {
+      return response.text();
+    })
+    .then(function(message) {
+      alert(message);
+    })
+    .catch(function(error) {
+      console.error('데이터 전송 실패:', error);
+    });
+};
+
+
+//서버에게 반납을 요청하는 함수
+function returnBook(booknumber){
+
+  //자료변환
+  var requestData = {
+    number: booknumber
+  };
+
+  fetch('/books/returnbook', {
+     method: 'POST',
+    headers: {
+      'Content-Type': 'application/json'
+     },
+     body: JSON.stringify(requestData)
+  })
+    .then(function(response) {
+      return response.text();
+     })
+    .then(function(message) {
+      alert(message);
+     })
+     .catch(function(error) {
+       console.error('데이터 전송 실패:', error);
+     });
+};
+
+  </script>
+</body>
+</html>
+<%-include('footer.ejs')%>

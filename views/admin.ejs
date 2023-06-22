@@ -1,0 +1,96 @@
+<%-include('header.ejs')%> 
+<!DOCTYPE html>
+<html>
+    <head>    
+    <title>booktree_회원가입</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/admin.css">
+    <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
+    </head>
+    <!--실제 로그인하면 /loginProc로 값 전달-->
+    <style>
+    .login-form label {
+        display: inline-block;
+        width: 100px;
+    }
+
+    .login-form input[type="text"],
+    .login-form input[type="password"]{
+        width: 220px;
+        margin-left:-110px;
+        padding: 5px;
+        border: 1px solid #ccc;
+    }
+
+    .login-form button {
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  height: 75px;
+  width: 100px;
+  cursor: pointer;
+  position: absolute;
+  bottom: 135px; /* 원하는 위치로 조정 */
+  left: 87%;
+  transform: translateX(-50%);
+  margin-top: 10px;
+}
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  text-align: center;
+  position: relative;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 420px;
+  width: 690px;
+  border: 2px solid gainsboro;
+  background-color: honeydew;
+  position: relative;
+}
+
+  </style>
+<body>
+<div class="login-container">
+  <div class="box">
+    <img src="/a.jpg" height:120 width :120 style="margin-left:15px">
+    <form class="login-form" action="/adminProc" method="post" >
+      <p style="margin-right: 100px;"><strong style="font-size : 27px;">회원가입</strong></p>             
+        <label for="name" ></label>
+        <input type="text" name="name" placeholder="이름을 입력하세요." id="name" required >
+        <label for ="user_id"></label>
+        <input type="text" name="user_id" placeholder="아이디를 입력하세요." id="user_id" required ><br>
+        <label for="pw"></label>
+        <input type="password" name="pw" placeholder="비밀번호를 입력하세요." style="margin-left: -215px;"id="pw" required><br>
+        <label for="email"></label>
+        <input type="text" name="email" placeholder="이메일을 입력하세요." id="email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}" required> 
+
+        <!--주석
+        <select id = "selectdomain" title="이메일 도메인">
+            <option value>-선택-</option>
+            <option value="naver.com">naver.com </option>
+            <option value="gmail.com">gmail.com </option>
+            <option value="hanmail.net">hanmail.net </option>
+            <option value="hotmail.com">hotmail.com </option>
+            <option value="korea.com">korea.com </option>
+            <option value="nate.com">nate.com </option>
+            <option value="yahoo.com">yahoo.com </option>
+          </select> -->
+          <label for="phone"></label>
+          <input type="text" name="phone" placeholder="연락처를 입력하세요." id="phone" pattern="\d{3}-\d{3,4}-\d{4}" required>          
+        <button type="submit">회원가입</button>
+</form>
+</div>
+</div>
+</body>
+</html>
+
+<%-include('footer.ejs')%>

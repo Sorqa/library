@@ -1,0 +1,79 @@
+<%-include('header.ejs')%> 
+<!DOCTYPE html>
+<html>
+    <head>    
+    <title>booktree_로그인</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/login.css">
+    <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
+    </head>
+    <!--실제 로그인하면 /loginProc로 값 전달-->
+    <style>
+   .login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  text-align: center;
+  position: relative; /* 부모 요소의 위치를 상대적으로 설정 */
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 350px;
+  width: 620px;
+  border: 2px solid gainsboro;
+  background-color: honeydew;
+  position: relative; /* 자식 요소의 위치를 상대적으로 설정 */
+}
+
+.login-form label {
+  display: inline-block;
+  width: 100px;
+}
+
+.login-form input[type="text"],
+.login-form input[type="password"] {
+  width: 220px;
+  margin-left: -110px;
+  padding: 5px;
+  border: 1px solid #ccc;
+}
+
+.login-form button {
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  position: absolute;
+  height: 75px;
+  width: 100px;
+  cursor: pointer;
+  top: 58%;
+  left: 90%;
+  transform: translate(-50%, -50%);
+  margin: 5px;
+}
+</style>
+<body>
+<div class="login-container">
+    <div class="box">
+        <img src="/a.jpg" height:120 width :120 style="margin-left:30px" >
+        <form class="login-form" action="/loginProc" method="post">
+        <p style="margin-right: 100px;"><strong style="font-size : 27px;">로그인</strong></p>
+        <label for="user_id"></label>
+        <input type="text" name="user_id" placeholder="아이디를 입력하세요." id="user_id" required>
+        <label for="pw"></label>
+        <input type="password" name="pw" placeholder="비밀번호를 입력하세요." id="pw" required>
+        <button type="submit">로그인</button>
+       
+    </form>
+    </div>
+</div>
+</body>
+</html>
+
+<%-include('footer.ejs')%>

@@ -1,0 +1,47 @@
+<%-include('header.ejs')%> 
+    
+    <h1> 문의받은 내용들 </h1>
+    <div style="display: flex; justify-content: center;">
+<table border=1>
+    <tr>
+        <th> idx</th>
+        <th> 성명</th>
+        <th> 연락처</th>
+        <th> 이메일</th>
+        <th> 문의내용 </th>
+        <th> 등록일</th>
+        <th> 삭제 </th>
+    </tr>
+
+    <!--문의 내용을 보이게 하는 반복문-->
+    <% lists.forEach(function(item){ %> 
+    <tr>
+        <td> <%=item.idx%> </td>
+        <td> <%=item.name%> </td>
+        <td> <%=item.phone%> </td>
+        <td> <%=item.email%> </td>
+        <td> <%-item.memo.replaceAll("\n","<br>")%> </td> <!--내용을 여러줄로 입력했을 때 한줄로 나오는 것을 해결-->
+        <td> <%=item.regdate%> </td>
+        <!--item.idx에 해당 내용 링크-->
+        <td> <a href="#" onclick="chkPassword('<%=item.idx%>');">삭제</a></td>
+        </tr>
+        <% }) %> 
+        
+        </table>
+        </div>
+        <script>
+            function chkPassword(idx){
+                var password = prompt('비밀번호를 입력해주세요.');
+                if (password === "1234") {
+                    var url = "/contactDelete?idx=" + idx;
+                    if (confirm('정말 삭제할까요?')) { //정말 삭제할 것인지 confirm 함수로 물어봄.
+                        location.href = url;
+                    }
+                } else {
+                    alert("비밀번호가 일치하지 않습니다.");
+                }
+            }
+        </script>
+        
+
+<%-include('footer.ejs')%>

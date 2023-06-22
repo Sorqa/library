@@ -1,0 +1,89 @@
+<%-include('header.ejs')%>
+<!DOCTYPE html>
+<html>
+<head>    
+    <title>booktree_로그인</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/login.css">
+    <link href="https://fonts.googleapis.com/earlyaccess/notosanskr.css" rel="stylesheet">
+    </head>
+    <style>
+.login-form label {
+  display: inline-block;
+  width: 100px;
+}
+.login-form p {
+  margin-top: -70px; /* 원하는 만큼의 음수값으로 조정 */
+}
+.login-form input[type="text"],
+.login-form input[type="password"],
+.login-form textarea {
+  width: 220px;
+  margin-left: -110px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  margin-top: 0px; /* 원하는 만큼의 음수값으로 조정 */
+}
+.login-form textarea{
+    width:300px;/*원하는 너비 값 조정*/
+    right:30%; /* 오른쪽으로 50% 이동 */
+    transform: translateX(20%); /* 가운데 정렬을 위한 추가적인 변형 */
+}
+.login-form label[for="memo"]{
+    text-align:right;
+}
+.login-form button {
+  text-align: center;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  height: 65px;
+  width: 100px;
+  cursor: pointer;
+  bottom: 30px; /* 원하는 위치로 조정 */
+  left: 50%;
+  transform: translateX(-50%);
+  position: absolute;
+}
+
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 70vh;
+  text-align: center;
+}
+
+.box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 500px;
+  width: 620px;
+  border: 2px solid gainsboro;
+  background-color: honeydew;
+  position: relative;
+}
+    </style>
+    <body>
+    <div class="login-container">
+        <div class="box">
+            <form class="login-form" action="/contactProc" method="post">
+                <p style="margin-right: 30px; " ><strong style="font-size : 27px;">문의하기</strong></p>
+                <label for ="name"> </label>
+                <input type="text" name="name" placeholder="이름을 입력하세요." id="name" required ><br>
+                <!--required로 필수값으로 넣게 함.-->
+                <label for="phone"></label>
+                <input type="text" name="phone" placeholder="연락처을 입력하세요." id="phone" required><br>
+                <label for="email"></label>
+                <input type="text" name="email" placeholder="이메일을 입력하세요."id="email" required ><br>
+                <label for="memo" style="margin-right:330px;">내용 :</label><br>
+                <textarea name="memo" cols="50" rows="10"></textarea><br>
+                <button type="submit">문의하기</button>
+</form>
+</div>
+</div>
+</body>
+</html>
+<%-include('footer.ejs')%>

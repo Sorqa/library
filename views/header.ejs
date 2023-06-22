@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sku_librarytree</title>
+    <style>
+        body{
+            background-color:honeydew;
+        }
+        h1{
+            display:flex;
+            align-items : center;
+            justify-content:center;
+            text-align : center;
+
+        }
+        
+    .top-navbar {
+      background-color: gainsboro;
+      padding: 10px;
+    }
+    
+    .top-navbar ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+      text-align:center;/*가운데정렬 적용*/
+    }
+    
+    .top-navbar li {
+      display: inline;
+      margin-right: 10px;
+    }
+    
+    .top-navbar a {
+      text-decoration: none;
+      color: #333;
+      padding: 5px;
+    }
+    
+    .top-navbar a:hover {
+      color: #ff0000;
+    }
+    
+    </style>
+</head>
+
+<body>
+    <h1><img src="/a.jpg" width="50" height="50" > Book Tree에 오신것을 환영합니다.</h1>
+    <header style="border-bottom:1px solid #aaa; margin-bottom:10px; padding-bottom:10px">
+        <nav class="top-navbar">
+            <ul>
+            <li><a href="/">홈</a></li>
+            <li><a href="/search">도서검색</a></li>
+            <li><a href="/map">찾아오시는 길</a></li>
+            <li><a href="/contact">문의하기</a></li>
+            <li><a href="/contactlist">문의내용들</a></li>
+               
+            <% if(user_id){ %> 
+                <%=name%>님 환영합니다. 
+                <li><a href="/logout">로그아웃</a></li>
+            <% }else{ %>
+                <li><a href="/login">로그인</a></li>
+            <% } %> 
+
+            <li><a href="/admin">회원가입</a> </li>
+            </ul>
+
+        </nav>
+    </header>

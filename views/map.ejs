@@ -1,0 +1,44 @@
+<%-include('header.ejs')%>
+<style>
+iframe{
+    display:block;
+    margin:0 auto;
+}
+.center-table {
+    display: flex;
+    justify-content: center;
+  }
+
+  th,
+    td {
+      padding: 8px;
+      text-align: center;
+      background-color: white;
+    }
+</style>
+<div class="center-table">
+<div style="display : block;">
+    <table style="border: 1px solid white; margin-left: 20px; margin-top:20px;">
+        <tr>
+          <th colspan="2">찾아오시는 길</th>
+        </tr>
+        <tr>
+          <td>지하철 이용시</td>
+          <td>우이신설선 가오리역 하차 후 2번 출구로 나와 도보 14분 이동</td>
+        </tr>
+        <tr>
+          <td>버스 이용시</td>
+          <td>151번, 1165번 버스를 타고 서울영어마을수유캠프국립재활원입구 정류장 하차</td>
+        </tr>
+        <tr>
+          <td colspan="2">
+            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d25275.563418439902!2d126.98831069784687!3d37.63873080924196!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x357cbc3819c13ffb%3A0x1a08d61f1e180c9c!2z7J6R7J2A64-E7ISc6rSA7ZWo6ruY64aA7J6Q!5e0!3m2!1sko!2skr!4v1685765557650!5m2!1sko!2skr" 
+            width="800" height="450" style="border:0;" 
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+            </iframe> 
+          </td>
+        </tr>
+        </table>
+       
+</div>
+<%-include('footer.ejs')%>

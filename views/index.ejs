@@ -1,0 +1,196 @@
+<%-include('header.ejs')%>
+    <style>
+
+        .face:nth-child(1) { transform: rotateY(  0deg) translateZ(-525px); }
+           .face:nth-child(2) { transform: rotateY( 36deg) translateZ(-525px); }
+           .face:nth-child(3) { transform: rotateY( 72deg) translateZ(-525px); }
+           .face:nth-child(4) { transform: rotateY(108deg) translateZ(-525px); }
+           .face:nth-child(5) { transform: rotateY(144deg) translateZ(-525px); }
+           .face:nth-child(6) { transform: rotateY(180deg) translateZ(-525px); }
+           .face:nth-child(7) { transform: rotateY(216deg) translateZ(-525px); }
+           .face:nth-child(8) { transform: rotateY(252deg) translateZ(-525px); }
+           .face:nth-child(9) { transform: rotateY(288deg) translateZ(-525px); }
+           .face:nth-child(10){ transform: rotateY(324deg) translateZ(-525px); }
+
+           #canvas  {
+               position: relative; 
+               width: 100%; height: 200px;
+               -webkit-perspective: 1500;
+               perspective: 1500;
+           }
+           #merry {
+               position: absolute;
+               left: 50%; top: 45px;
+   
+               transform-style: preserve-3d;
+               animation: rint 15s infinite linear;
+               
+           }
+           #merry:hover{
+               animation-play-state: paused;
+           }
+           @keyframes rint 
+           {
+               from { transform: rotateY(0deg); }
+               to { transform: rotateY(360deg); }
+           }
+           .face {
+               position: absolute;
+               left: 0; top: 0;
+               margin-left: -165px;
+   
+               backface-visibility: hidden;
+               transform-style: preserve-3d;
+           }
+           .cell {
+               width: 325px; height: 300px; 
+               margin-bottom: 5px;
+               background-size: 100% 100%;
+   
+               transition-duration: 0.5s;
+           }
+           .cell:hover {
+               transform: scale(1.2) translateZ(50px);
+           }
+      </style>
+      
+    <script language="javascript">//팝업창
+        function showPopup1() { window.open("/popup1", "a", "width=1600, height=900, left=100, top=50"); }
+        function showPopup2() { window.open("/popup2", "b", "width=1600, height=900, left=100, top=50"); }
+        function showPopup3() { window.open("/popup3", "c", "width=1600, height=900, left=100, top=50"); }
+        function showPopup4() { window.open("/popup4", "d", "width=1600, height=900, left=100, top=50"); }
+        function showPopup5() { window.open("/popup5", "e", "width=1600, height=900, left=100, top=50"); }
+        function showPopup6() { window.open("/popup6", "f", "width=1600, height=900, left=100, top=50"); }
+        function showPopup7() { window.open("/popup7", "g", "width=1600, height=900, left=100, top=50"); }
+        function showPopup8() { window.open("/popup8", "h", "width=1600, height=900, left=100, top=50"); }
+        function showPopup9() { window.open("/popup9", "i", "width=1600, height=900, left=100, top=50"); }
+        function showPopup10() { window.open("/popup10", "j", "width=1600, height=900, left=100, top=50"); }
+        function showPopup11() { window.open("/popup11", "k", "width=1600, height=900, left=100, top=50");}
+        function showPopup12() { window.open("/popup12", "l", "width=1600, height=900, left=100, top=50");}
+        function showPopup13() { window.open("/popup13", "m", "width=1600, height=900, left=100, top=50");}
+        function showPopup14() { window.open("/popup14", "n", "width=1600, height=900, left=100, top=50");}
+        function showPopup15() { window.open("/popup15", "o", "width=1600, height=900, left=100, top=50");}
+        function showPopup16() { window.open("/popup16", "p", "width=1600, height=900, left=100, top=50");}
+        function showPopup17() { window.open("/popup17", "q", "width=1600, height=900, left=100, top=50");}
+        function showPopup18() { window.open("/popup18", "r", "width=1600, height=900, left=100, top=50");}
+        function showPopup19() { window.open("/popup19", "s", "width=1600, height=900, left=100, top=50");}
+        function showPopup20() { window.open("/popup20", "t", "width=1600, height=900, left=100, top=50");}
+
+
+    </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+    <div id="loader-wrapper">
+        <div id="loader"></div>
+        <div class="loader-section section-left"></div>
+        <div class="loader-section section-right"></div>
+    </div>
+  
+</div>
+<div id="canvas">
+    <div id="merry">
+        <div class="face">
+            <div class="cell">
+                <button type="button"> <img src="./1.jpeg" width="200px" height="200px" onclick="showPopup1();">
+                </button>
+            </div>
+            <div class="cell">
+                <button type="button"> <img src="./2.jpeg" width="200px" height="200px" onclick="showPopup2();">
+                </button>
+            </div>
+        </div>
+        <div class="face">
+            <div class="cell">
+                <button type="button"> <img src="./3.jpeg"  width="200px" height="200px" onclick="showPopup3();">
+                </button>
+            </div>
+            <div class="cell">
+                <button type="button"> <img src="./4.jpeg"  width="200px" height="200px" onclick="showPopup4();">
+                </button>
+            </div>
+        </div>
+        <div class="face">
+            <div class="cell">
+                <button type="button"> <img src="./5.jpeg" width="200px" height="200px" onclick="showPopup5();">
+                </button>
+            </div>
+            <div class="cell">
+                <button type="button"> <img src="./6.jpeg"  width="200px" height="200px" onclick="showPopup6();">
+                </button>
+            </div>
+        </div>
+        <div class="face">
+            <div class="cell">
+                <button type="button"> <img src="./7.jpeg"  width="200px" height="200px" onclick="showPopup7();">
+                </button>
+            </div>
+            <div class="cell">
+                <button type="button"> <img src="./8.jpeg"  width="200px" height="200px" onclick="showPopup8();">
+                </button>
+            </div>
+        </div>
+        <div class="face">
+            <div class="cell">
+                <button type="button"> <img src="./9.jpeg"  width="200px" height="200px" onclick="showPopup9();">
+                </button>
+            </div>
+            <div class="cell">
+                <button type="button"> <img src="./10.jpeg"  width="200px" height="200px" onclick="showPopup10();">
+                </button>
+            </div>
+        </div>
+        <div class="face">
+            <div class="cell">
+                <button type="button"> <img src="./11.jpeg"  width="200px" height="200px" onclick="showPopup11();">
+                </button>
+            </div>
+            <div class="cell">
+                <button type="button"> <img src="./12.jpeg"  width="200px" height="200px" onclick="showPopup12();">
+                </button>
+            </div>
+        </div>
+        <div class="face">
+            <div class="cell">
+                <button type="button"> <img src="./13.jpeg" width="200px" height="200px" onclick="showPopup13();">
+                </button>
+            </div>
+            <div class="cell">
+                <button type="button"> <img src="./14.jpeg"  width="200px" height="200px" onclick="showPopup14();">
+                </button>
+            </div>
+        </div>
+        <div class="face">
+            <div class="cell">
+                <button type="button"> <img src="./15.jpeg"  width="200px" height="200px" onclick="showPopup15();">
+                </button>
+            </div>
+            <div class="cell">
+                <button type="button"> <img src="./16.jpeg"  width="200px" height="200px" onclick="showPopup16();">
+                </button>
+            </div>
+        </div>
+        <div class="face">
+            <div class="cell">
+                <button type="button"> <img src="./17.jpeg" width="200px" height="200px" onclick="showPopup17();">
+                </button>
+            </div>
+            <div class="cell">
+                <button type="button"> <img src="./18.jpeg"  width="200px" height="200px" onclick="showPopup18();">
+                </button>
+            </div>
+        </div>
+        <div class="face">
+            <div class="cell">
+                <button type="button"> <img src="./19.jpeg"  width="200px" height="200px" onclick="showPopup19();">
+                </button>
+            </div>
+            <div class="cell">
+                <button type="button"> <img src="./20.jpeg"  width="200px" height="200px" onclick="showPopup20();">
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<%-include('footer.ejs')%>
